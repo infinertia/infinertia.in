@@ -19,15 +19,15 @@ color:white;
   background: #111827;
 }
 
-.logo {
-  width: 60px;
-  height: 60px;
-  background: white;
-  padding: 5px;
-  border-radius: 8px;
-}
+.logo-img {
+    width: 60px;                  
+    height: 60px;                
+    clip-path: circle(50% at 50% 50%); 
+    object-fit: cover;            
+    background-color: #ffffff;    
+    border: 2px solid #ffffff;    
 
-.logo img, .navbar-brand img {
+.navbar-brand img {
     border-radius: 50%; 
     padding: 5px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
