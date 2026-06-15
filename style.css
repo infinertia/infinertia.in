@@ -22,6 +22,9 @@ color:white;
 .logo {
   width: 60px;
   height: 60px;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
 }
 
 .hero{
