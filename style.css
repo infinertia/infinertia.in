@@ -28,10 +28,10 @@ color:white;
 }
 
 .logo img, .navbar-brand img {
-    background-color: rgba(255, 255, 255, 0.2); /* Halka white background */
-    border-radius: 50%; /* Agar logo gol hai */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%; 
     padding: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow effect */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
 }
 
 .hero{
