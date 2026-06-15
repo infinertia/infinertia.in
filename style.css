@@ -5,10 +5,23 @@ background:#0b1220;
 color:white;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header {
+  display: flex;
+  align-items: center;  
+  gap: 10px;            
+  padding: 15px;
+  background: #111827;
+}
+
 .logo {
   width: 60px;
   height: 60px;
-  border-radius: 10px;
 }
 
 .hero{
