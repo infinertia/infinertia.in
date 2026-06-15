@@ -5,6 +5,12 @@ background:#0b1220;
 color:white;
 }
 
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+}
+
 .hero{
 text-align:center;
 padding:100px 20px;
