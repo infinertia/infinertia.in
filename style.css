@@ -1,93 +1,103 @@
-body{
-margin:0;
-font-family:Arial;
-background:#0b1220;
-color:white;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: white;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    display: flex;
+    align-items: center;  
+    justify-content: flex-start;
+    gap: 15px;            
+    padding: 15px 30px;
+    background: #111827;
 }
 
-.header {
-  display: flex;
-  align-items: center;  
-  gap: 10px;            
-  padding: 15px;
-  background: #111827;
+.header h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
 .logo {
-  width: 60px;
-  height: 60px;
-  background: white;
-  padding: 5px;
-  border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    background: white;      
+    padding: 5px;             
+    border-radius: 50%;       
+    object-fit: contain;      
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
-.hero{
-text-align:center;
-padding:100px 20px;
-background:linear-gradient(135deg,#1e3a8a,#0b1220);
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #1e3a8a, #0b1220);
 }
 
-.hero h1{
-font-size:60px;
+.hero h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
 }
 
-.hero p{
-color:#cbd5e1;
-font-size:18px;
+.hero p {
+    color: #cbd5e1;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-.btn{
-display:inline-block;
-padding:12px 25px;
-background:#38bdf8;
-color:black;
-border-radius:8px;
-text-decoration:none;
-margin-top:10px;
-font-weight:bold;
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-.about{
-text-align:center;
-padding:50px 20px;
+.btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-2px);
 }
 
-.grid{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-padding:40px;
+.about {
+    text-align: center;
+    padding: 50px 20px;
 }
 
-.card{
-background:#111827;
-padding:20px;
-width:220px;
-border-radius:10px;
-text-align:center;
-transition:0.3s;
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px;
 }
 
-.card:hover{
-transform:scale(1.05);
+.card {
+    background: #111827;
+    padding: 20px;
+    width: 220px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
 }
 
-.cta{
-text-align:center;
-padding:60px;
-background:#1e293b;
+.card:hover {
+    transform: scale(1.05);
 }
 
-footer{
-text-align:center;
-padding:20px;
-background:#0b1220;
+.cta {
+    text-align: center;
+    padding: 60px;
+    background: #1e293b;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0b1220;
+    border-top: 1px solid #1e293b;
+}
