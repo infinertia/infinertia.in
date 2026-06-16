@@ -30,6 +30,8 @@ body {
 }
 
 .hero {
+    text-align: center;
+    padding: 120px 20px;
     background: linear-gradient(rgba(11, 18, 32, 0.45), rgba(11, 18, 32, 0.55)), url('hero-bg.png');
     background-size: cover;
     background-position: center;
