@@ -11,6 +11,23 @@
     <meta property="og:url" content="https://Infinertia.in">
     <meta property="og:type" content="website">
 </head>
+
+<div class="kebab-menu" onclick="toggleMenu()">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
+<div id="sideNav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleMenu()">&times;</a>
+    <h3 class="menu-title">Quick Links</h3>
+    <a href="#courses">📚 All Courses</a>
+    <a href="/class11/">📘 Class 11th</a>
+    <a href="/class12/">📗 Class 12th</a>
+    <a href="/neet/">🧬 NEET Target</a>
+    <a href="/jee/">⚡ JEE Target</a>
+    <a href="https://t.me/infinertia" target="_blank">✈️ Join Telegram</a>
+</div>
     
 <body>
 
@@ -68,6 +85,17 @@
 <footer>
     <p>© 2026 Infinertia | Learning Platform</p>
 </footer>
-
+    
+<script>
+function toggleMenu() {
+    var sideNav = document.getElementById("sideNav");
+    if (sideNav.style.width === "280px") {
+        sideNav.style.width = "0";
+    } else {
+        sideNav.style.width = "280px";
+    }
+}
+</script>
+    
 </body>
 </html>
