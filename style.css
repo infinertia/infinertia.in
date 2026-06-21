@@ -104,3 +104,88 @@ footer {
     background: #0b1220;
     border-top: 1px solid #1e293b;
 }
+
+.kebab-menu {
+    position: fixed;
+    bottom: 30px; /* Screen ke niche se spacing */
+    right: 30px;  /* Screen ke right se spacing */
+    z-index: 2000;
+    cursor: pointer;
+    background: #38bdf8; /* Aapke button ka blue color */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0px 4px 15px rgba(56, 189, 248, 0.4);
+    transition: 0.3s;
+}
+
+.kebab-menu:hover {
+    transform: scale(1.1);
+    background: #0ea5e9;
+}
+
+/* Dots inside the button */
+.kebab-menu .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #000000; /* Dark dots blue background par sahi dikhenge */
+    border-radius: 50%;
+}
+
+/* Side Navigation Panel Styling */
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 2001;
+    top: 0;
+    right: 0;
+    background-color: #111827; /* Aapke card aur header se matched background */
+    overflow-x: hidden;
+    transition: 0.4s ease;
+    padding-top: 60px;
+    box-shadow: -5px 0px 25px rgba(0,0,0,0.5);
+    border-left: 1px solid #1e293b;
+}
+
+.menu-title {
+    color: #38bdf8;
+    padding-left: 32px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+/* Side Menu Links */
+.sidenav a {
+    padding: 15px 15px 15px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #cbd5e1;
+    display: block;
+    transition: 0.2s;
+}
+
+/* Hover effect on menu links */
+.sidenav a:hover {
+    color: white;
+    background-color: #1e293b;
+    padding-left: 40px; /* Slight push effect */
+}
+
+/* Close button 'X' */
+.sidenav .closebtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    color: #cbd5e1;
+}
+
+.sidenav .closebtn:hover {
+    color: #38bdf8;
+}
