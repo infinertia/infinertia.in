@@ -1,32 +1,353 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 11th - Infinertia</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SciMath Academy — Learn Science & Math Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-50: #E6F1FB; --blue-200: #85B7EB; --blue-600: #185FA5; --blue-800: #0C447C;
+      --green-50: #EAF3DE; --green-800: #27500A; --green-600: #3B6D11;
+      --amber-50: #FAEEDA; --amber-800: #633806; --amber-600: #854F0B;
+      --purple-50: #EEEDFE; --purple-800: #3C3489;
+      --teal-50: #E1F5EE; --teal-800: #085041;
+      --coral-50: #FAECE7; --coral-800: #712B13;
+      --gray: #888780;
+      --radius-md: 8px; --radius-lg: 12px;
+    }
+
+    body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+
+    /* NAV */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; border-bottom: 1px solid #e8e8e8; background: #fff; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 8px; color: #1a1a1a; text-decoration: none; }
+    .logo svg { width: 22px; height: 22px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 14px; color: #555; text-decoration: none; }
+    .nav-links a:hover { color: #185FA5; }
+    .nav-cta { background: #185FA5; color: #fff !important; padding: 8px 18px; border-radius: var(--radius-md); font-weight: 500; }
+    .nav-cta:hover { background: #0C447C !important; }
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { width: 22px; height: 2px; background: #333; border-radius: 2px; display: block; }
+    .mobile-menu { display: none; flex-direction: column; gap: 12px; padding: 16px 40px; background: #fff; border-bottom: 1px solid #e8e8e8; }
+    .mobile-menu a { font-size: 14px; color: #555; text-decoration: none; }
+    .mobile-menu.open { display: flex; }
+
+    /* HERO */
+    .hero { background: linear-gradient(160deg, #E6F1FB 0%, #EAF3DE 100%); padding: 72px 40px 60px; text-align: center; }
+    .hero-badge { display: inline-block; background: #fff; border: 1px solid #B5D4F4; color: #185FA5; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px; }
+    .hero h1 { font-size: 42px; font-weight: 600; line-height: 1.2; margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { color: #185FA5; }
+    .hero p { font-size: 16px; color: #555; max-width: 520px; margin: 0 auto 32px; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary { background: #185FA5; color: #fff; border: none; padding: 12px 26px; border-radius: var(--radius-md); font-size: 15px; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: #0C447C; }
+    .btn-outline { background: #fff; border: 1px solid #ccc; color: #333; padding: 12px 26px; border-radius: var(--radius-md); font-size: 15px; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; }
+    .btn-outline:hover { border-color: #185FA5; color: #185FA5; }
+    .stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .stat .num { font-size: 26px; font-weight: 600; color: #185FA5; }
+    .stat .lbl { font-size: 13px; color: #666; margin-top: 2px; }
+
+    /* SECTIONS */
+    .section { padding: 64px 40px; }
+    .section.gray { background: #f9f9f7; }
+    .section-label { font-size: 12px; font-weight: 500; color: #185FA5; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .section-title { font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+    .section-sub { font-size: 15px; color: #666; margin-bottom: 36px; }
+
+    /* COURSES */
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .course-card { background: #fff; border: 1px solid #e8e8e8; border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+    .course-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+    .card-thumb { height: 90px; display: flex; align-items: center; justify-content: center; }
+    .card-thumb svg { width: 38px; height: 38px; }
+    .thumb-blue { background: var(--blue-50); }
+    .thumb-green { background: var(--green-50); }
+    .thumb-amber { background: var(--amber-50); }
+    .thumb-purple { background: var(--purple-50); }
+    .thumb-teal { background: var(--teal-50); }
+    .thumb-coral { background: var(--coral-50); }
+    .card-body { padding: 14px; }
+    .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .card-meta { font-size: 12px; color: #777; margin-bottom: 10px; }
+    .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
+    .badge-blue { background: var(--blue-50); color: var(--blue-800); }
+    .badge-green { background: var(--green-50); color: var(--green-800); }
+    .badge-amber { background: var(--amber-50); color: var(--amber-800); }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+    .stars { font-size: 12px; color: #BA7517; }
+    .lessons { font-size: 12px; color: #888; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .feat { padding: 20px; background: #fff; border: 1px solid #e8e8e8; border-radius: var(--radius-lg); }
+    .feat-icon { width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--blue-50); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .feat-icon svg { width: 20px; height: 20px; color: #185FA5; stroke: #185FA5; fill: none; }
+    .feat h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .feat p { font-size: 13px; color: #666; line-height: 1.5; }
+
+    /* TESTIMONIALS */
+    .tgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .tcard { background: #fff; border: 1px solid #e8e8e8; border-radius: var(--radius-lg); padding: 20px; }
+    .tcard blockquote { font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+    .tauthor { display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+    .av-blue { background: var(--blue-50); color: var(--blue-800); }
+    .av-green { background: var(--green-50); color: var(--green-800); }
+    .av-purple { background: var(--purple-50); color: var(--purple-800); }
+    .aname { font-size: 13px; font-weight: 600; }
+    .agrade { font-size: 11px; color: #888; }
+
+    /* TOPICS STRIP */
+    .topics { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 32px 40px; background: #f9f9f7; border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8; }
+    .topic-pill { background: #fff; border: 1px solid #e0e0e0; border-radius: 20px; padding: 6px 16px; font-size: 13px; color: #444; }
+
+    /* CTA */
+    .cta-section { background: #185FA5; padding: 64px 40px; text-align: center; color: #fff; }
+    .cta-section h2 { font-size: 28px; font-weight: 600; margin-bottom: 10px; }
+    .cta-section p { font-size: 15px; opacity: 0.85; margin-bottom: 28px; }
+    .btn-white { background: #fff; color: #185FA5; border: none; padding: 12px 28px; border-radius: var(--radius-md); font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+    .btn-white:hover { background: #E6F1FB; }
+
+    /* FOOTER */
+    footer { padding: 28px 40px; background: #1a1a1a; color: #aaa; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-left { font-size: 13px; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: #aaa; text-decoration: none; }
+    .footer-links a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { padding: 16px 20px; }
+      .hero { padding: 48px 20px 40px; }
+      .hero h1 { font-size: 28px; }
+      .stats { gap: 28px; }
+      .section { padding: 48px 20px; }
+      .topics { padding: 24px 20px; }
+      .cta-section { padding: 48px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="header">
-    <img src="../logo.png" class="logo" alt="Infinertia Logo">
-    <h1>Infinertia</h1>
-</header>
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9C11.18 3.78 5.84 1.76 3.8 3.8c-2.04 2.04-.02 7.37 4.5 11.9s9.87 6.54 11.9 4.5z"/><path d="M3.8 20.2c2.03 2.04 7.37.02 11.9-4.5 4.52-4.53 6.54-9.87 4.5-11.9"/></svg>
+    SciMath Academy
+  </a>
+  <div class="nav-links">
+    <a href="#courses">Courses</a>
+    <a href="#features">Features</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#enroll" class="nav-cta">Enroll free</a>
+  </div>
+  <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <a href="#courses">Courses</a>
+  <a href="#features">Features</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#enroll" style="color:#185FA5;font-weight:500">Enroll free</a>
+</div>
 
-<header class="hero">
-    <h1>Class 11th</h1>
-    <p>Physics, Chemistry, Maths & Biology Study Material</p>
-    <a href="/" class="btn">← Back to Home</a>
-</header>
-
-<section class="about">
-    <h2>Syllabus & Notes</h2>
-    <p>Yahan par aapko Class 11th ke chapters, daily practice problems (DPPs) aur notes jald hi milenge.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🎓 100% free to get started</div>
+  <h1>Learn <span>Science & Math</span> the way it clicks</h1>
+  <p>Expert-led courses in physics, chemistry, biology, and mathematics — built for students who want to truly understand, not just memorize.</p>
+  <div class="hero-btns">
+    <a href="#enroll" class="btn-primary">Start learning free</a>
+    <a href="#courses" class="btn-outline">Browse courses</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">12,400+</div><div class="lbl">Students enrolled</div></div>
+    <div class="stat"><div class="num">48</div><div class="lbl">Courses available</div></div>
+    <div class="stat"><div class="num">4.9 ★</div><div class="lbl">Average rating</div></div>
+    <div class="stat"><div class="num">95%</div><div class="lbl">Pass rate</div></div>
+  </div>
 </section>
 
+<!-- TOPIC PILLS -->
+<div class="topics">
+  <span class="topic-pill">⚛️ Atomic Structure</span>
+  <span class="topic-pill">📐 Trigonometry</span>
+  <span class="topic-pill">🧬 Cell Biology</span>
+  <span class="topic-pill">🌊 Wave Motion</span>
+  <span class="topic-pill">🧪 Organic Chemistry</span>
+  <span class="topic-pill">∫ Calculus</span>
+  <span class="topic-pill">🌍 Ecology</span>
+  <span class="topic-pill">⚡ Electricity</span>
+  <span class="topic-pill">📊 Statistics</span>
+  <span class="topic-pill">🔭 Astronomy</span>
+</div>
+
+<!-- COURSES -->
+<section class="section gray" id="courses">
+  <div class="section-label">Explore subjects</div>
+  <div class="section-title">Popular courses</div>
+  <div class="section-sub">Start with our most-loved subjects</div>
+  <div class="courses-grid">
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9C11.18 3.78 5.84 1.76 3.8 3.8c-2.04 2.04-.02 7.37 4.5 11.9s9.87 6.54 11.9 4.5z"/><path d="M3.8 20.2c2.03 2.04 7.37.02 11.9-4.5 4.52-4.53 6.54-9.87 4.5-11.9"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Physics — Class 11 & 12</div>
+        <div class="card-meta">Mechanics, Waves, Thermodynamics</div>
+        <span class="badge badge-blue">Beginner friendly</span>
+        <div class="card-footer"><span class="stars">★★★★★ 4.9</span><span class="lessons">32 lessons</span></div>
+      </div>
+    </a>
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Chemistry — Organic</div>
+        <div class="card-meta">Reactions, Bonding, Nomenclature</div>
+        <span class="badge badge-green">Most popular</span>
+        <div class="card-footer"><span class="stars">★★★★★ 4.9</span><span class="lessons">28 lessons</span></div>
+      </div>
+    </a>
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h7"/><path d="m14 17 3 3 3-3m-3 3v-6"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Mathematics — Calculus</div>
+        <div class="card-meta">Limits, Derivatives, Integrals</div>
+        <span class="badge badge-amber">Advanced</span>
+        <div class="card-footer"><span class="stars">★★★★☆ 4.7</span><span class="lessons">40 lessons</span></div>
+      </div>
+    </a>
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-purple">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 7v5l3 3"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Biology — Cell & Genetics</div>
+        <div class="card-meta">Cell division, DNA, Evolution</div>
+        <span class="badge badge-blue">Beginner friendly</span>
+        <div class="card-footer"><span class="stars">★★★★★ 4.9</span><span class="lessons">24 lessons</span></div>
+      </div>
+    </a>
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Statistics & Probability</div>
+        <div class="card-meta">Data, Distributions, Inference</div>
+        <span class="badge badge-green">Intermediate</span>
+        <div class="card-footer"><span class="stars">★★★★☆ 4.7</span><span class="lessons">20 lessons</span></div>
+      </div>
+    </a>
+    <a href="#" class="course-card">
+      <div class="card-thumb thumb-coral">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#993C1D" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Earth & Space Science</div>
+        <div class="card-meta">Geology, Astronomy, Climate</div>
+        <span class="badge badge-amber">New</span>
+        <div class="card-footer"><span class="stars">★★★★★ 5.0</span><span class="lessons">18 lessons</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-label">Why SciMath?</div>
+  <div class="section-title">Everything you need to succeed</div>
+  <div class="section-sub">Built around how students actually learn</div>
+  <div class="features-grid">
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+      <h4>HD video lessons</h4>
+      <p>Clear, well-paced explanations with visual animations for every concept.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <h4>Practice problems</h4>
+      <p>Hundreds of graded exercises with step-by-step solutions you can follow.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <h4>Completion certificates</h4>
+      <p>Earn shareable certificates when you finish each course.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+      <h4>Learn anywhere</h4>
+      <p>All content works on mobile, tablet, or desktop — study on your schedule.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h4>Live doubt sessions</h4>
+      <p>Weekly Q&A with expert tutors, open to all enrolled students.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <h4>Progress tracking</h4>
+      <p>Visual dashboards so you always know how far you've come.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section gray" id="testimonials">
+  <div class="section-label">Student reviews</div>
+  <div class="section-title">What our students say</div>
+  <div class="section-sub">Honest feedback from our learners</div>
+  <div class="tgrid">
+    <div class="tcard">
+      <blockquote>"The physics course helped me crack my board exam. The animations made mechanics so easy to visualise!"</blockquote>
+      <div class="tauthor"><div class="avatar av-blue">AR</div><div><div class="aname">Aarav Rao</div><div class="agrade">Class 12, Delhi</div></div></div>
+    </div>
+    <div class="tcard">
+      <blockquote>"Organic chemistry finally clicked after I took the course here. The practice problems are the best part."</blockquote>
+      <div class="tauthor"><div class="avatar av-green">PS</div><div><div class="aname">Priya Sharma</div><div class="agrade">JEE Aspirant, Pune</div></div></div>
+    </div>
+    <div class="tcard">
+      <blockquote>"I went from failing math to scoring 92% in just two months. The doubt sessions were incredibly helpful."</blockquote>
+      <div class="tauthor"><div class="avatar av-purple">NK</div><div><div class="aname">Nadia Khan</div><div class="agrade">Class 11, Mumbai</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLL CTA -->
+<section class="cta-section" id="enroll">
+  <h2>Ready to start learning?</h2>
+  <p>Join 12,400+ students already mastering science and math — completely free to begin.</p>
+  <a href="mailto:hello@scimathacademy.com" class="btn-white">Create free account</a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p>© 2026 Infinertia | Learning Platform</p>
+  <div class="footer-left">© 2026 SciMath Academy. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+    <a href="https://github.com" target="_blank">GitHub</a>
+  </div>
 </footer>
 
 </body>
 </html>
+
+
